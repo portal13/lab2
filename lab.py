@@ -144,20 +144,20 @@ class DataAnalyze(server.App):
     def getData(self, params):
         ticker = str(params['ticker'])
 
-        max = float(params['max'])
-        min = float(params['min'])
-        df = pd.read_csv('Download/%s.csv'%ticker,index_col=False, header=1)
-        a = df[df["week"]<=max ]
-        b=a[df["week"]>=min]
+        max1 = float(params['max'])
+        min1 = float(params['min'])
+        df = read_and_filter(ticker)
+        a = df[df["week"]<=max1 ]
+        b = a[df["week"]>=min1]
         c = b[df['year']!=0]
-        z=c[df['VHI']!=-1]
+        z = c[df['VHI']!=-1]
         z
         return z
     def getPlot(self, params):
         ticke= str(params['ticke'])
         ticker3 = str(params['ticker3'])
         year = float(params['year'])
-        df = pd.read_csv('Download/%s.csv'%ticker3,index_col=False, header=1)
+        df = read_and_filter(ticker3)
         if year!=0:
             w=df[df['year']==year]
         else:
