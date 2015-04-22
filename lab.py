@@ -1,3 +1,4 @@
+from spyre import server
 import pandas as pd
 import urllib2
 import json
@@ -169,3 +170,4 @@ class DataAnalyze(server.App):
         return fig
 app = DataAnalyze()
 app.launch(port=9094)
+raw_input()
